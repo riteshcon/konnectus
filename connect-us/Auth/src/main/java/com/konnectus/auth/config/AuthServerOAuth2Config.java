@@ -56,6 +56,8 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
 	@Autowired
 	private JwtAccessTokenConverter accessTokenConverter;
 	
+	private static final String RESOURCE_ID = "resource_id";
+	
 	 @Resource(name = "userService")
 	    private UserDetailsService userDetailsService;
 
@@ -70,14 +72,15 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
 	 * AuthorizationServerConfigurerAdapter#configure(org.springframework.security.
 	 * oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer)
 	 */
-	@Override
+/*	@Override
 	public void configure(ClientDetailsServiceConfigurer configurer) throws Exception {
 
 		configurer.inMemory().withClient(CLIEN_ID).secret(CLIENT_SECRET)
 				.authorizedGrantTypes(GRANT_TYPE_PASSWORD, AUTHORIZATION_CODE, REFRESH_TOKEN, IMPLICIT)
 				.scopes(SCOPE_READ, SCOPE_WRITE, TRUST).accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS)
+				.resourceIds("konnectus")
 				.refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS);
-	}
+	}*/
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
@@ -100,7 +103,7 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
                  details.setClientSecret("kon");
                  details.setAuthorizedGrantTypes(Arrays.asList(GRANT_TYPE_PASSWORD, AUTHORIZATION_CODE, REFRESH_TOKEN, IMPLICIT) );
                  details.setScope(Arrays.asList(SCOPE_READ, SCOPE_WRITE, TRUST));
-                 details.setResourceIds(Arrays.asList("oauth2-resource"));
+                 details.setResourceIds(Arrays.asList(RESOURCE_ID));
                  Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
                  authorities.add(new SimpleGrantedAuthority("ROLE_CLIENT"));
                  details.setAuthorities(authorities);
