@@ -1,0 +1,86 @@
+{
+	"id": "2df0d792-a020-c957-7e17-5632d979f523",
+	"name": "Konnect",
+	"description": "",
+	"order": [
+		"e3b49452-e021-3580-4a59-436f8295c81f",
+		"ff7ae43b-613f-b95f-2b9b-fc3429a9b6f4"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1529424516919,
+	"owner": "1853350",
+	"public": false,
+	"requests": [
+		{
+			"id": "e3b49452-e021-3580-4a59-436f8295c81f",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: Basic a29uOmtvbg==\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Basic a29uOmtvbg==",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/oauth/token",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1529847746834,
+			"name": "OAUTH",
+			"description": "",
+			"collectionId": "2df0d792-a020-c957-7e17-5632d979f523",
+			"responses": [],
+			"rawModeData": "username=ritab&password=ritab&grant_type=password"
+		},
+		{
+			"id": "ff7ae43b-613f-b95f-2b9b-fc3429a9b6f4",
+			"headers": "Content-Type: application/json\nAuthorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicmVzb3VyY2VfaWQiXSwidXNlcl9uYW1lIjoicml0YWIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE1Mjk4OTI5ODIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiOWE5NDhhMGMtMTg3NS00MTBkLTg3MjAtMTMwZjIyNDg3NjQzIiwiY2xpZW50X2lkIjoia29uIn0.VUytvh4HFuTXdlwrv96EJij57HRQS7960Hf2pFBIx_8\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicmVzb3VyY2VfaWQiXSwidXNlcl9uYW1lIjoicml0YWIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE1Mjk4OTI5ODIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiOWE5NDhhMGMtMTg3NS00MTBkLTg3MjAtMTMwZjIyNDg3NjQzIiwiY2xpZW50X2lkIjoia29uIn0.VUytvh4HFuTXdlwrv96EJij57HRQS7960Hf2pFBIx_8",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/test/hello",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1529849816389,
+			"name": "Hello",
+			"description": "",
+			"collectionId": "2df0d792-a020-c957-7e17-5632d979f523",
+			"responses": [],
+			"rawModeData": "username=ritab&password=ritab&grant_type=password"
+		}
+	]
+}
