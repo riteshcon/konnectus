@@ -48,6 +48,7 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .anonymous().disable()
+				.requestMatchers().antMatchers("/login", "/logout", "/oauth/token", "/oauth/authorize", "/oauth/confirm_access").and()
                 .authorizeRequests()
                 .antMatchers("/api-docs/**").permitAll();
     }
