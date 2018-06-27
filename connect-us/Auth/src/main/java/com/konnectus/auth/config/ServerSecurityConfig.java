@@ -28,75 +28,80 @@ import org.springframework.web.filter.CorsFilter;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Resource(name = "userService")
-    private UserDetailsService userDetailsService;
+	@Resource(name = "userService")
+	private UserDetailsService userDetailsService;
 
-    @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
+	@Override
+	@Bean
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
 
-    @Autowired
-    public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService)
-                .passwordEncoder(encoder());
-    }
+	/**
+	 * Spring Security provides some configuration helpers to quickly get common
+	 * authentication manager features set up in your application. The most commonly
+	 * used helper is the AuthenticationManagerBuilder which is great for setting up
+	 * in-memory, JDBC or LDAP user details, or for adding a custom
+	 * UserDetailsService.
+	 * 
+	 * @param auth
+	 * @throws Exception
+	 */
+	@Autowired
+	public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication().passwordEncoder(encoder());
+	}
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .anonymous().disable()
-				.requestMatchers().antMatchers("/login", "/logout", "/oauth/token", "/oauth/authorize", "/oauth/confirm_access").and()
-                .authorizeRequests()
-                .antMatchers("/api-docs/**").permitAll();
-    }
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable().anonymous().disable().requestMatchers()
+				.antMatchers("/login", "/logout", "/oauth/token", "/oauth/authorize", "/oauth/confirm_access").and()
+				.authorizeRequests().antMatchers("/api-docs/**").permitAll();
+	}
 
-/*    @Bean
-    public BCryptPasswordEncoder encoder(){
-        return new BCryptPasswordEncoder();
-    }*/
-    
-	   @Bean
-	   public TokenStore tokenStore() {
-	      return new JwtTokenStore(accessTokenConverter());
-	   }
-	   
-	   @Bean
-	   public JwtAccessTokenConverter accessTokenConverter() {
-	      JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-	      converter.setSigningKey("ritesh122");
-	      return converter;
-	   }
+	/*
+	 * @Bean public BCryptPasswordEncoder encoder(){ return new
+	 * BCryptPasswordEncoder(); }
+	 */
 
-    @SuppressWarnings("deprecation")
-    @Bean
-    public static NoOpPasswordEncoder encoder() {
-    return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
-    }
+	@Bean
+	public TokenStore tokenStore() {
+		return new JwtTokenStore(accessTokenConverter());
+	}
 
+	@Bean
+	public JwtAccessTokenConverter accessTokenConverter() {
+		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+		converter.setSigningKey("ritesh122");
+		return converter;
+	}
 
-    @Bean
-    public FilterRegistrationBean corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        source.registerCorsConfiguration("/**", config);
-        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
-        bean.setOrder(0);
-        return bean;
-    }
-    
-	   @Bean
-	   @Primary 
-	   public DefaultTokenServices tokenServices() {
-	      DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-	      defaultTokenServices.setTokenStore(tokenStore());
-	      defaultTokenServices.setSupportRefreshToken(true);
-	      return defaultTokenServices;
-	   }
+	@SuppressWarnings("deprecation")
+	@Bean
+	public static NoOpPasswordEncoder encoder() {
+		return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
+	}
+
+	@Bean
+	public FilterRegistrationBean corsFilter() {
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		CorsConfiguration config = new CorsConfiguration();
+		config.setAllowCredentials(true);
+		config.addAllowedOrigin("*");
+		config.addAllowedHeader("*");
+		config.addAllowedMethod("*");
+		source.registerCorsConfiguration("/**", config);
+		FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+		bean.setOrder(0);
+		return bean;
+	}
+
+	@Bean
+	@Primary
+	public DefaultTokenServices tokenServices() {
+		DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
+		defaultTokenServices.setTokenStore(tokenStore());
+		defaultTokenServices.setSupportRefreshToken(true);
+		return defaultTokenServices;
+	}
 }
