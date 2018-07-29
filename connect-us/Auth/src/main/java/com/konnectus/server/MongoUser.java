@@ -1,4 +1,4 @@
-package com.konnectus.auth.server;
+package com.konnectus.server;
 
 import java.util.Collection;
 import java.util.List;

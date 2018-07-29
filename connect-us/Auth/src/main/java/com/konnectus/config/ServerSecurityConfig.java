@@ -1,4 +1,4 @@
-package com.konnectus.auth.config;
+package com.konnectus.config;
 
 import javax.annotation.Resource;
 
@@ -28,7 +28,7 @@ import org.springframework.web.filter.CorsFilter;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Resource(name = "userService")
+	@Resource(name = "userDetailsService")
 	private UserDetailsService userDetailsService;
 
 	@Override
@@ -47,10 +47,16 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 	 * @param auth
 	 * @throws Exception
 	 */
-	@Autowired
+/*	@Autowired
 	public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().passwordEncoder(encoder());
-	}
+	}*/
+	
+    @Autowired
+    public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(encoder());
+    }
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

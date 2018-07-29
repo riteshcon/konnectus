@@ -1,4 +1,4 @@
-package com.konnectus.auth.server;
+package com.konnectus.server;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +17,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 
-@Service(value = "userService")
+@Service(value = "userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService { 
     
     @Autowired

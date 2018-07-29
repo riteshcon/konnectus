@@ -1,4 +1,4 @@
-package com.konnectus.auth.config;
+package com.konnectus.config;
 
 /**
  *  server hosting the protected resources, capable of accepting and responding to protected resource requests using access token

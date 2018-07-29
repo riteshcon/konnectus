@@ -1,4 +1,4 @@
-package com.konnectus.auth.config;
+package com.konnectus.config;
 
 /**
  * Server issuing access tokens to client after successfully authentication the resource owner and obtaining authorization.
@@ -57,7 +57,7 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
 
 	private static final String RESOURCE_ID = "resource_id";
 
-	@Resource(name = "userService")
+	@Resource(name = "userDetailsService")
 	private UserDetailsService userDetailsService;
 
 	@Override

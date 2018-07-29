@@ -10,7 +10,7 @@ import com.konnectus.domain.User;
 import com.konnectus.repository.UserRepository;
 
 
-@Service
+@Service(value = "userService")
 public class UserService {
 	
 	private final Logger _log = LoggerFactory.getLogger(getClass());

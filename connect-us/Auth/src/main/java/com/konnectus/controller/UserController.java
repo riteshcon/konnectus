@@ -1,4 +1,4 @@
-package com.konnectus.auth.controller;
+package com.konnectus.controller;
 
 import java.util.List;
 
