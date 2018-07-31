@@ -4,7 +4,10 @@
 	"description": "",
 	"order": [
 		"e3b49452-e021-3580-4a59-436f8295c81f",
-		"ff7ae43b-613f-b95f-2b9b-fc3429a9b6f4"
+		"ff7ae43b-613f-b95f-2b9b-fc3429a9b6f4",
+		"68d44dad-72fa-3ac6-4d0e-b9190032c42b",
+		"cfc66ea1-bd2a-9d17-95a0-813240f6eec9",
+		"a6667b27-4959-514c-faef-2e8e0e415d31"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -12,6 +15,111 @@
 	"owner": "1853350",
 	"public": false,
 	"requests": [
+		{
+			"id": "68d44dad-72fa-3ac6-4d0e-b9190032c42b",
+			"headers": "Content-Type: application/json\nAuthorization: bearer {{accesstoken}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "bearer {{accesstoken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/event",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1533047979483,
+			"name": "Event",
+			"description": "",
+			"collectionId": "2df0d792-a020-c957-7e17-5632d979f523",
+			"responses": [],
+			"rawModeData": "{\n\t\"eventDate\":\"2013-07-03T16:05:07.168Z\",\n\t\"eventName\":\"Football\",\n\t\"users\":[{\n\t\t\"id\":\"5b1e90f44c44c734e88dbc43\",\n\t\t\"name\":\"ritesh\",\n\t\t\"email\":\"riteshnailwal@hotmail.com\"\n\t}\n\t\t\n\t\t]\n}"
+		},
+		{
+			"id": "a6667b27-4959-514c-faef-2e8e0e415d31",
+			"headers": "Content-Type: application/json\nAuthorization: bearer {{accesstoken}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "bearer {{accesstoken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/event/5b60744d788d6507281a8af5/user",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1533051629125,
+			"name": "Associate User",
+			"description": "",
+			"collectionId": "2df0d792-a020-c957-7e17-5632d979f523",
+			"responses": [],
+			"rawModeData": "  {\n        \"id\": \"5b2e1987c159f547446a66e5\",\n        \"name\": null,\n        \"email\": \"riteshnailwal@hotmail.com\",\n        \"mobile\": null,\n        \"address\": null,\n        \"age\": 0,\n        \"hobbies\": null,\n        \"audit\": null\n    }"
+		},
+		{
+			"id": "cfc66ea1-bd2a-9d17-95a0-813240f6eec9",
+			"headers": "Content-Type: application/json\nAuthorization: bearer {{accesstoken}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "bearer {{accesstoken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/event",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1532871316890,
+			"name": "GetEvents",
+			"description": "",
+			"collectionId": "2df0d792-a020-c957-7e17-5632d979f523",
+			"responses": [],
+			"rawModeData": "{\n\t\"eventDate\":\"27-06-2018\",\n\t\"eventName\":\"Football\",\n\t\"users\":[\n\t\t\n\t\t]\n}"
+		},
 		{
 			"id": "e3b49452-e021-3580-4a59-436f8295c81f",
 			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: Basic a29uOmtvbg==\n",
@@ -40,16 +148,16 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1529847746834,
+			"time": 1532527179695,
 			"name": "OAUTH",
 			"description": "",
 			"collectionId": "2df0d792-a020-c957-7e17-5632d979f523",
 			"responses": [],
-			"rawModeData": "username=ritab&password=ritab&grant_type=password"
+			"rawModeData": "username=ritesh&password=password&grant_type=password"
 		},
 		{
 			"id": "ff7ae43b-613f-b95f-2b9b-fc3429a9b6f4",
-			"headers": "Content-Type: application/json\nAuthorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicmVzb3VyY2VfaWQiXSwidXNlcl9uYW1lIjoicml0YWIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE1Mjk4OTI5ODIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiOWE5NDhhMGMtMTg3NS00MTBkLTg3MjAtMTMwZjIyNDg3NjQzIiwiY2xpZW50X2lkIjoia29uIn0.VUytvh4HFuTXdlwrv96EJij57HRQS7960Hf2pFBIx_8\n",
+			"headers": "Content-Type: application/json\nAuthorization: bearer {{accesstoken}}\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -59,12 +167,12 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicmVzb3VyY2VfaWQiXSwidXNlcl9uYW1lIjoicml0YWIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE1Mjk4OTI5ODIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiOWE5NDhhMGMtMTg3NS00MTBkLTg3MjAtMTMwZjIyNDg3NjQzIiwiY2xpZW50X2lkIjoia29uIn0.VUytvh4HFuTXdlwrv96EJij57HRQS7960Hf2pFBIx_8",
+					"value": "bearer {{accesstoken}}",
 					"description": "",
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:8080/test/hello",
+			"url": "http://localhost:8080/user/list",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -75,8 +183,8 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1529849816389,
-			"name": "Hello",
+			"time": 1532965275280,
+			"name": "Users",
 			"description": "",
 			"collectionId": "2df0d792-a020-c957-7e17-5632d979f523",
 			"responses": [],
