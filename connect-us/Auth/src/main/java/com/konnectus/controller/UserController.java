@@ -32,13 +32,13 @@ public class UserController {
 		return userService.findUserById(userId);
 	}
 	
-	@RequestMapping(value = "", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public void addUsers(@RequestBody User user) {
 		_log.info("Saving user.");
 		userService.createUser(user);
 	}
 	
-	@RequestMapping(value = "", method = RequestMethod.PUT)
+	@RequestMapping(method = RequestMethod.PUT)
 	public void updateUsers(@RequestBody User user) {
 		_log.info("Saving user.");
 		userService.createUser(user);
