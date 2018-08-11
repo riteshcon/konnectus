@@ -2,6 +2,7 @@ package com.konnectus.domain;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -10,7 +11,11 @@ public class Group {
 	protected String id;
 	protected String name;
 	protected String description;
+	
+	@DBRef
 	protected List<User> groupMembers;
+	
+	@DBRef
 	protected List<User> groupAdmin;
 	
 	public List<User> getGroupMembers() {
