@@ -1,12 +1,30 @@
 package com.konnectus.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @Document
-public class User {
+public class User extends org.springframework.security.core.userdetails.User{
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	public User(String username, String password, List<SimpleGrantedAuthority> authorities) {
+		super(username, password, authorities);
+	}
+	
+	
+	public User() {
+		super(null,null,new ArrayList<SimpleGrantedAuthority>());
+	}
 	@Id
 	protected String id;
 	protected String name;

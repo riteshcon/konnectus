@@ -30,11 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         MongoCollection<Document> collection = database.getCollection("user");
         Document document = collection.find(Filters.eq("username",username)).first();
         if(document!=null) {
-            String email = document.getString("email");
-            String password = document.getString("password");
-            MongoUser user = new MongoUser(username,password,getAuthority());
-           
-            return  new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthority());
+            return  new org.springframework.security.core.userdetails.User(username, document.getString("password"), getAuthority());
         }
         throw new UsernameNotFoundException(username);
     }

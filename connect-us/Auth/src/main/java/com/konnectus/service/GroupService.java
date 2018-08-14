@@ -17,6 +17,7 @@ public class GroupService {
 	@Autowired GroupRepository groupRepository;
 	
 	public void createGroup(Group group) {
+		_log.info("in controller saving group");
 		groupRepository.save(group);
 	}
 	
