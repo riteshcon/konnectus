@@ -272,7 +272,7 @@ textarea.input100 {
   background: -webkit-linear-gradient(left, #f1982c, #248a05, #d89627, #278a06);
   background: -o-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
   background: -moz-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: linear-gradient(to left, #00dbde, #fc00ff, #00dbde, #fc00ff);
   top: 0;
   left: -100%;
   -webkit-transition: all 0.4s;
