@@ -20,6 +20,7 @@ import com.mongodb.client.MongoCursor;
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
+	
 	private final Logger _log = LoggerFactory.getLogger(getClass());
 	@Autowired UserService userService;
 	
@@ -37,12 +38,6 @@ public class UserController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public void addUsers(@RequestBody User user) {
-		_log.info("Saving user.");
-		userService.createUser(user);
-	}
-	
-	@RequestMapping(method = RequestMethod.PUT)
-	public void updateUsers(@RequestBody User user) {
 		_log.info("Saving user.");
 		userService.createUser(user);
 	}

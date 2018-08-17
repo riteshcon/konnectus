@@ -2,12 +2,13 @@ package com.konnectus.domain;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Group {
-	
+	@Id
 	protected String id;
 	protected String name;
 	protected String description;
@@ -16,7 +17,7 @@ public class Group {
 	protected List<User> groupMembers;
 	
 	@DBRef
-	protected List<User> groupAdmin;
+	protected List<User> groupAdmins;
 	
 	public List<User> getGroupMembers() {
 		return groupMembers;
@@ -27,10 +28,10 @@ public class Group {
 	
 	
 	public List<User> getGroupAdmin() {
-		return groupAdmin;
+		return groupAdmins;
 	}
 	public void setGroupAdmin(List<User> groupAdmin) {
-		this.groupAdmin = groupAdmin;
+		this.groupAdmins = groupAdmin;
 	}
 	public String getId() {
 		return id;

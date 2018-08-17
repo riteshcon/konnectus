@@ -21,9 +21,16 @@ public class User extends org.springframework.security.core.userdetails.User{
 		super(username, password, authorities);
 	}
 	
+	/**
+	 * Special constructor to create users with only ID populated. Needed in Groups and Events.
+	 */
+	public User(String id) {
+		super("dummy","dummy",new ArrayList<SimpleGrantedAuthority>());
+		this.id = id;
+	}
 	
 	public User() {
-		super(null,null,new ArrayList<SimpleGrantedAuthority>());
+		super("dummy","dummy",new ArrayList<SimpleGrantedAuthority>());
 	}
 	@Id
 	protected String id;
