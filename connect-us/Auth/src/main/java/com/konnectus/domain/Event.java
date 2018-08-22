@@ -1,7 +1,7 @@
 package com.konnectus.domain;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,7 +16,7 @@ public class Event {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private Date eventDate;
 	private String eventName;
-	private Set<User> users;
+	private List<User> users;
 
 	
 	public String getId() {
@@ -43,11 +43,11 @@ public class Event {
 		this.eventName = eventName;
 	}
 
-	public Set<User> getUsers() {
+	public List<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(Set<User> users) {
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 

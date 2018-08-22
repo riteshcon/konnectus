@@ -2,6 +2,8 @@ package com.konnectus.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,28 +12,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.konnectus.domain.Event;
-import com.konnectus.domain.User;
 import com.konnectus.service.EventService;
 
 @RestController
+@RequestMapping(value = "/event")
 public class EventController {
 	@Autowired
 	private EventService eventService;
+	
+	private final Logger _log = LoggerFactory.getLogger(getClass());
 
-	@RequestMapping(value = "/event", method= RequestMethod.POST)
+	@RequestMapping(method= RequestMethod.POST)
 	public Event addEvent(@RequestBody Event event) {
 		return eventService.addEvent(event);
 	}
 	
-	@RequestMapping(value = "/event", method= RequestMethod.GET)
+	@RequestMapping(method= RequestMethod.GET)
 	public List<Event> getEvents() {
 		return eventService.getEvents();
 	}
 	
-	@RequestMapping(value = "/event/{eventid}/user", method= RequestMethod.POST)
-	public Event addUserToEvent(@PathVariable("eventid") String eventid, @RequestBody User user) {
-		return eventService.addUserToEvent(eventid, user);
+	@RequestMapping(value = "/{eventId}/{userId}", method= RequestMethod.POST)
+	public Event addUserToEvent(@PathVariable("eventId") String eventId, @PathVariable("userId") String userId) {
+		return eventService.addUserToEvent(eventId, userId);
 	}
 	
-	
+	@RequestMapping(value = "/findByName/{name}", method = RequestMethod.GET)
+	public Event getEventByName(@PathVariable String name) {
+		_log.info("Finding event by name");
+		return eventService.findEventByName(name);
+	}
 }

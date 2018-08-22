@@ -1,13 +1,16 @@
 package com.konnectus.service;
 
-import java.util.HashSet;
+import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import com.konnectus.domain.Event;
@@ -27,15 +30,18 @@ public class EventService {
 		return eventRepository.save(event);
 	}
 	
-	public Event addUserToEvent(String eventid, User user) {
-		Optional<Event> eventOptionalToSave = eventRepository.findById(eventid);
+	public Event addUserToEvent(String eventId, String userId) {
+		Optional<Event> eventOptionalToSave = eventRepository.findById(eventId);
+		User eventUser = new User(userId);
+		
 		if(eventOptionalToSave.isPresent()) {
 			Event eventToSave = eventOptionalToSave.get();
-			Set<User> users = eventToSave.getUsers();
+			List<User> users = eventToSave.getUsers();
 			if(users == null) {
-				users = new HashSet<>();
+				users = new ArrayList<User>();
 			}
-			users.add(user);
+			users.add(eventUser);
+			eventToSave.setUsers(users);
 			return eventRepository.save(eventToSave);
 		}
 		return null;
@@ -43,5 +49,16 @@ public class EventService {
 	
 	public List<Event> getEvents() {
 		return eventRepository.findAll();
+	}
+	
+	public Event findEventByName(String name) {
+		ExampleMatcher matcher = ExampleMatcher.matchingAny().withMatcher("eventName", contains().ignoreCase());
+				
+
+		Event searchEvent = new Event();
+		searchEvent.setEventName(name);
+
+		Example<Event> searchExample = Example.of(searchEvent, matcher);
+		return eventRepository.findOne(searchExample).get();
 	}
 }

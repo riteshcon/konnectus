@@ -12,6 +12,7 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import com.konnectus.domain.Group;
+import com.konnectus.domain.User;
 import com.konnectus.repository.GroupRepository;
 
 @Service
@@ -49,7 +50,11 @@ public class GroupService {
 	public void addUserToGroup(String groupId, String userId) {
 				
 		Group toUpdate = groupRepository.findById(groupId).get();
-		toUpdate.getGroupMembers().add(userService.findUserById(userId));
+		
+		User member = new User(userId);
+		toUpdate.getGroupMembers().add(member);
+		
+		//toUpdate.getGroupMembers().add(userService.findUserById(userId));
 		groupRepository.save(toUpdate);
 		
 	}
