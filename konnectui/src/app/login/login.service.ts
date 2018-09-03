@@ -33,7 +33,7 @@ getToken(tokenRequest: TokenRequest){
       "Authorization": "Basic a29uOmtvbg=="
     });
     this.options = new RequestOptions({ headers: this.headers });
-    this.creds = 'username=ritesh&password=password&grant_type=password';
+    this.creds = 'username='+tokenRequest.username+'&password='+tokenRequest.password+'&grant_type=password';
     this.http.post(this.url, this.creds, this.options).pipe(map(res => res.json())).subscribe(response => {
         //localStorage.setItem('currentUser', JSON.stringify({userName:user.username, token: response.access_token }));
         //this.router.navigateByUrl("/home");
