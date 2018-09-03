@@ -6,20 +6,20 @@
 
       <div class="col-md-4">
 
-        <input class="input100" type="text" name="email" placeholder="Enter your mail">
+        <input #email class="input100" type="text" name="email" placeholder="Enter your mail">
 
       </div>
 
       <div class="col-md-4">
 
-        <input class="input100" type="password" name="name" placeholder="Enter your password">
+        <input #password  class="input100" type="password" name="password" placeholder="Enter your password">
 
       </div>
 
 
       <div class="col-md-2">
 
-        <button (click)="signIn()"><span>Sign In</span></button>
+        <button (click)="signIn(email.value, password.value)"><span>Sign In</span></button>
 
       </div>
 

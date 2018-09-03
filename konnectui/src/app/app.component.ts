@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoginService } from './login/login.service';
+import { TokenRequest } from './login/TokenRequest';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'konnectui';
 
-  signIn(){
-    console.log("Signing in");
+  constructor(private loginService: LoginService) { }
+
+
+
+  signIn(email:string, password:string){
+    const tokenRequest: TokenRequest = new TokenRequest(email, password, "password" );
+    this.loginService.getToken(tokenRequest);
   }
 }
