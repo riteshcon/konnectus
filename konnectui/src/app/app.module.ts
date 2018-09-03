@@ -4,18 +4,25 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router'; 
+import { RouterModule, Routes } from '@angular/router'; 
+import { GroupComponent } from './group/group.component'; 
+
+
+const appRoutes: Routes = [
+  { path: 'group', component: GroupComponent }
+];
 
 @NgModule({
   
   declarations: [
-    AppComponent
+    AppComponent,
+    GroupComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
