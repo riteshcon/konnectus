@@ -23,9 +23,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/bootstrap.min.css",
+              "src/main.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/js/jquery-3.2.1.min.js", 
+              "src/js/fontawesome-all.min.js", 
+
+"src/js/bootstrap.bundle.min.js", 
+"src/js/jquery.ajaxchimp.min.js", 
+"src/js/main.js", 
+"src/js/retina.min.js"
+            ]
           },
           "configurations": {
             "production": {
